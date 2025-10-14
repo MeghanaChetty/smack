@@ -1,0 +1,26 @@
+# SQL Server
+*.bak
+*.log
+*.ldf
+*.mdf
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+
+# Node (for later)
+node_modules/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
