@@ -22,10 +22,10 @@ namespace smack.API.Controllers
             return Ok(new { connected = canConnect });
         }
         [HttpGet("restaurants")]
-        public async Task<ActionResult> GetRestaurants()
+        public ActionResult GetRestaurants()
         {
             // Note: Ensure your 'Restaurant' entity is visible (using Smack.Core.Entities;)
-            var restauranslist = await _context.Restaurants.ToListAsync();
+            var restauranslist = _context.Restaurants.ToListAsync();
             return Ok(restauranslist);
         }
     }
