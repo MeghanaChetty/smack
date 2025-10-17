@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using smack.infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,15 +25,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapControllers();
     app.MapOpenApi();
-   
+    app.MapScalarApiReference(); // Uncomment this for Scalar UI
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
-app.MapControllers();
+app.MapControllers(); // Only map controllers once, here
 
 app.Run();

@@ -11,9 +11,9 @@ namespace smack.API.Controllers
 
     {
         public SmackDbContext _context;
-        public TestController()
+        public TestController(SmackDbContext context)
         {
-            _context = new SmackDbContext();
+            _context = context;
         }
         [HttpGet("connection")]
         public async Task<IActionResult> GetDbConnectionStatus()
@@ -22,10 +22,9 @@ namespace smack.API.Controllers
             return Ok(new { connected = canConnect });
         }
         [HttpGet("restaurants")]
-        public ActionResult GetRestaurants()
+        public async Task<ActionResult> GetRestaurants()
         {
-            // Note: Ensure your 'Restaurant' entity is visible (using Smack.Core.Entities;)
-            var restauranslist = _context.Restaurants.ToListAsync();
+            var restauranslist = await _context.Restaurants.ToListAsync();
             return Ok(restauranslist);
         }
     }
