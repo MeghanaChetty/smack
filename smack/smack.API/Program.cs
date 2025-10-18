@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using smack.core.Interfaces;
 using smack.infrastructure.Data;
+using smack.infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ var connectionString =
 builder.Services.AddDbContext<SmackDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddOpenApi();
 
