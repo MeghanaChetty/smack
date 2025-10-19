@@ -1,5 +1,4 @@
 ﻿using smack.core.Entities;
-using smack.infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,8 @@ namespace smack.core.Interfaces
 {
     public interface IRestaurantRepository : IRepository<Restaurant>
     {
-        Task<int> GetRestaurantWithMenuItemsAsync(int restaurantId);
-        Task<int> GetRestaurantWithTablesAsync(int restaurantId);
+        Task<Restaurant?> GetRestaurantWithMenuItemsAsync(int restaurantId);
+        Task<Restaurant?> GetRestaurantWithTablesAsync(int restaurantId);
         Task<IEnumerable<Restaurant>> GetActiveRestaurantsAsync();
     }
         

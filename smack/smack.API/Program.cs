@@ -20,7 +20,6 @@ builder.Services.AddDbContext<SmackDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 builder.Services.AddOpenApi();
 
 var app = builder.Build();

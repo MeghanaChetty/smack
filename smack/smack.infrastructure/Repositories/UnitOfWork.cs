@@ -2,7 +2,6 @@
 using smack.core.Entities;
 using smack.core.Interfaces;
 using smack.infrastructure.Data;
-using smack.infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

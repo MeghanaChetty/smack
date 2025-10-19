@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smack.infrastructure.Interfaces
+namespace smack.core.Interfaces
 {
    public interface IRepository<T>
     {
@@ -17,16 +17,11 @@ namespace smack.infrastructure.Interfaces
 
         Task AddAsync(T entity);
 
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        void UpdateAsync(T entity);
+        void DeleteAsync(T entity);
         Task<bool> ExistsAsync(int id);
         Task<int> CountAsync();
 
-        //AddAsync(T entity) - add new entity
-        //UpdateAsync(T entity) - update entity
-        //DeleteAsync(T entity) - delete entity
-        //ExistsAsync(int id) - check if exists
-        //CountAsync() - count entities
 
 
 
