@@ -29,7 +29,7 @@ namespace smack.infrastructure.Repositories
             _context = context;
         }
 
-        public IRestaurantRepository Restaurant
+        public IRestaurantRepository Restaurants
         {
             get
             {
