@@ -3,6 +3,7 @@ using Scalar.AspNetCore;
 using smack.core.Interfaces;
 using smack.infrastructure.Data;
 using smack.infrastructure.Repositories;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 // Retrieving this: "SmackDatabase"
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 var connectionString =
     builder.Configuration.GetConnectionString("SmackDatabase")
         

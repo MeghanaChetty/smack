@@ -26,7 +26,9 @@ namespace smack.infrastructure.Repositories
         }
 
         public async Task<Restaurant?> GetRestaurantWithTablesAsync(int restaurantId)
+        
         {
+            
             return await _dbSet
                 .Include(r => r.Restauranttables)
                 .FirstOrDefaultAsync(r => r.RestaurantId == restaurantId);
