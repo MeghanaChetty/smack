@@ -10,4 +10,8 @@
     <ProjectReference Include="..\smack.core\smack.core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>
