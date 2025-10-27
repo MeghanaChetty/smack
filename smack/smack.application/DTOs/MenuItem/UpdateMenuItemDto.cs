@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace smack.application.DTOs.MenuItem
 {
-    public class UpdateMenuItem
+    public class UpdateMenuItemDto
     {
         public int Id { get; set; }
         public string? ItemName { get; set; }
