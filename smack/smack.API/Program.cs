@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using smack.application;
 using smack.core.Interfaces;
 using smack.infrastructure.Data;
 using smack.infrastructure.Repositories;
@@ -25,10 +26,11 @@ var connectionString =
 builder.Services.AddDbContext<SmackDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddOpenApi();
 
-builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

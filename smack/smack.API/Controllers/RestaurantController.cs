@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using smack.core.Interfaces;
-
+using AutoMapper;
+using smack.application.DTOs.Restaurant;
 namespace smack.API.Controllers
 {
     [ApiController]
@@ -8,9 +9,11 @@ namespace smack.API.Controllers
     public class RestaurantController : ControllerBase
     {
         public IUnitOfWork _context;
-        public RestaurantController(IUnitOfWork context)
+        public IMapper _mapper;
+        public RestaurantController(IUnitOfWork context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<ActionResult> GetRestaurants()
@@ -23,11 +26,14 @@ namespace smack.API.Controllers
         public async Task<ActionResult> GetRestaurantById(int id)
         {
             var restaurant = await _context.Restaurants.GetByIdAsync(id);
+
             if (restaurant == null)
             {
                 return NotFound();
             }
-            return Ok(restaurant);
+
+            var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);  // Single object
+            return Ok(restaurantDto);
         }
 
         [HttpGet("{id}/menu")] 
