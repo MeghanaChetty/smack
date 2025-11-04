@@ -4,6 +4,7 @@ using AutoMapper;
 using smack.application.DTOs.Restaurant;
 using smack.application.DTOs.MenuItem;
 using smack.core.Entities;
+using smack.application.Common;
 namespace smack.API.Controllers
 {
     [ApiController]
@@ -31,11 +32,13 @@ namespace smack.API.Controllers
             var restaurant = await _context.Restaurants.GetByIdAsync(id);
             if (restaurant == null)
             {
-                return NotFound();
+                return NotFound(ResponseHelper.ErrorResponse("Restaurant not found", null));
             }
 
             var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);  // Single object
-            return Ok(restaurantDto);
+            //return Ok(restaurantDto);
+            return Ok(ResponseHelper.SuccessResponse(restaurantDto, "Restaurant retrieved successfully"));
+
         }
 
         [HttpGet("{id}/menu")]
